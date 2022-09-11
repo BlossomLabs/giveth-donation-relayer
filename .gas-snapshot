@@ -1,1 +1,4 @@
-TestContract:testBar() (gas: 401)
+GivethDonationRelayerTest:testItEmitsSendDonationCorrectly() (gas: 45470)
+GivethDonationRelayerTest:testItFailsWhenUpgradingWithNoOwner() (gas: 926086)
+GivethDonationRelayerTest:testItTransfersAmountCorrectly() (gas: 47097)
+GivethDonationRelayerTest:testItUpgradesCorrectly() (gas: 930730)
