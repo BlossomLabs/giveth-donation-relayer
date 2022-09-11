@@ -6,6 +6,7 @@ import "forge-std/Test.sol";
 import "openzeppelin-contracts/proxy/ERC1967/ERC1967Proxy.sol";
 import "openzeppelin-contracts/token/ERC20/ERC20.sol";
 import "src/GivethDonationRelayer.sol";
+import "./GivethDonationRelayerV2.sol";
 import "./TestERC20.sol";
 
 contract GivethDonationRelayerTest is Test {
@@ -21,6 +22,7 @@ contract GivethDonationRelayerTest is Test {
     address deployer = 0xb4c79daB8f259C7Aee6E5b2Aa729821864227e84;
     address sender = address(1);
     address receiver = address(2);
+    address notOwner = address(3);
 
     bytes project = bytes("Test Project");
 
@@ -69,5 +71,22 @@ contract GivethDonationRelayerTest is Test {
         donationRelayer.sendDonation(token, receiver, donatedAmount, project);
 
         vm.stopPrank();
+    }
+
+    function testItUpgradesCorrectly() public {
+        GivethDonationRelayerV2 donationRelayerV2 = new GivethDonationRelayerV2();
+
+        donationRelayer.upgradeTo(address(donationRelayerV2));
+        donationRelayerV2 = GivethDonationRelayerV2(address(proxy));
+
+        assertEq(donationRelayerV2.contractVersion(), 2);  
+    }
+
+    function testItFailsWhenUpgradingWithNoOwner() public {
+        GivethDonationRelayerV2 donationRelayerV2 = new GivethDonationRelayerV2();
+
+        vm.expectRevert(bytes("Ownable: caller is not the owner"));
+        vm.prank(notOwner);
+        donationRelayer.upgradeTo(address(donationRelayerV2));
     }
 }
