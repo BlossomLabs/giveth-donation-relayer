@@ -1,4 +1,4 @@
 .env
-broadcast/
+broadcast/**/31337
 cache/
 out/
