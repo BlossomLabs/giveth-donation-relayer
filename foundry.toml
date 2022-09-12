@@ -1,3 +1,9 @@
 [profile.ci]
 solc_version = "0.8.13"
 fuzz-runs = 10_000
+
+[rpc_endpoints]
+rinkeby = "${RINKEBY_RPC_URL}"
+
+[etherscan]
+rinkeby = { key = "${ETHERSCAN_KEY}" }
