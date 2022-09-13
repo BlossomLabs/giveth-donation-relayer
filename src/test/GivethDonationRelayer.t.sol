@@ -10,7 +10,7 @@ import "./GivethDonationRelayerV2.sol";
 import "./TestERC20.sol";
 
 contract GivethDonationRelayerTest is Test {
-    event SendDonation(address indexed from, address indexed to, IERC20 token, uint256 amount, bytes project);
+    event SendDonation(address indexed from, address indexed to, uint256 indexed projectId, IERC20 token, uint256 amount);
 
 
     GivethDonationRelayer donationRelayer;
@@ -24,7 +24,7 @@ contract GivethDonationRelayerTest is Test {
     address receiver = address(2);
     address notOwner = address(3);
 
-    bytes project = bytes("Test Project");
+    uint256 projectId = 1;
 
     uint256 donatedAmount = 5 ether;
 
@@ -53,7 +53,7 @@ contract GivethDonationRelayerTest is Test {
 
         vm.startPrank(sender);
         token.approve(address(donationRelayer), donatedAmount);
-        donationRelayer.sendDonation(token, receiver,  donatedAmount, project);
+        donationRelayer.sendDonation(token, receiver,  donatedAmount, projectId);
         vm.stopPrank();
 
         assertEqDecimal(token.balanceOf(sender), senderBeforeBalance - donatedAmount, decimals);
@@ -66,9 +66,9 @@ contract GivethDonationRelayerTest is Test {
         token.approve(address(donationRelayer), donatedAmount);
 
         vm.expectEmit(true, true, true, true);
-        emit SendDonation(sender, receiver, token, donatedAmount, project);
+        emit SendDonation(sender, receiver, projectId, token, donatedAmount);
 
-        donationRelayer.sendDonation(token, receiver, donatedAmount, project);
+        donationRelayer.sendDonation(token, receiver, donatedAmount, projectId);
 
         vm.stopPrank();
     }
