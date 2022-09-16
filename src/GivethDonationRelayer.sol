@@ -18,10 +18,10 @@ contract GivethDonationRelayer is Initializable, UUPSUpgradeable, OwnableUpgrade
     emit SendDonation(msg.sender, _receiver, _projectId, _token, _amount);
   }
 
-  function initialize() public initializer {
+  function initialize(address owner) public initializer {
 
     ///@dev as there is no constructor, we need to initialise the OwnableUpgradeable explicitly
-    __Ownable_init();
+    _transferOwnership(owner);
   }
 
   function _authorizeUpgrade(address) internal override onlyOwner {}
