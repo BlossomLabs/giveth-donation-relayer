@@ -1,38 +1,21 @@
-# <h1 align="center"> Forge Template </h1>
+# Giveth Donation Relayer
 
-**Template repository for getting started quickly with Foundry projects**
+Contract to keep registry of Giveth donations outside of Giveth via event emissions.
 
-![Github Actions](https://github.com/foundry-rs/forge-template/workflows/CI/badge.svg)
+## Deployments
 
-## Getting Started
+- **Gnosis Chain**: [0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86](https://blockscout.com/xdai/mainnet/address/0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86).
+- **Rinkeby**: [0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86](https://rinkeby.etherscan.io/address/0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86).
 
-Click "Use this template" on [GitHub](https://github.com/foundry-rs/forge-template) to create a new repository with this repo as the initial state.
 
-Or, if your repo already exists, run:
-```sh
-forge init
-forge build
-forge test
+## Tests
+
+Execute the following to run the tests:
+
+```shell
+forge test -vvvv
 ```
 
-## Writing your first test
-
-All you need is to `import forge-std/Test.sol` and then inherit it from your test contract. Forge-std's Test contract comes with a pre-instatiated [cheatcodes environment](https://book.getfoundry.sh/cheatcodes/), the `vm`. It also has support for [ds-test](https://book.getfoundry.sh/reference/ds-test.html)-style logs and assertions. Finally, it supports Hardhat's [console.log](https://github.com/brockelmore/forge-std/blob/master/src/console.sol). The logging functionalities require `-vvvv`.
-
-```solidity
-pragma solidity 0.8.10;
-
-import "forge-std/Test.sol";
-
-contract ContractTest is Test {
-    function testExample() public {
-        vm.roll(100);
-        console.log(1);
-        emit log("hi");
-        assertTrue(true);
-    }
-}
-```
 
 ## Development
 
