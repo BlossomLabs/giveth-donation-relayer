@@ -6,6 +6,7 @@ Contract to keep registry of Giveth donations outside of Giveth via event emissi
 
 - **Gnosis Chain**: [0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86](https://blockscout.com/xdai/mainnet/address/0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86).
 - **Rinkeby**: [0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86](https://rinkeby.etherscan.io/address/0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86).
+- **Goerli**: [0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86](https://goerli.etherscan.io/address/0x93A3d3C35D121ABB3c812AdeD6Eb184F6D631d86).
 
 
 ## Tests
